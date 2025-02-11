@@ -4,7 +4,7 @@
 #include "hardware/clocks.h"
 #include "hardware/timer.h"
 
-const uint PIN_SERVO_MOTOR = 22;
+const uint PIN_SERVO_MOTOR = 12;
 
 // Protótipos de funções
 int64_t off_alarm_callback(alarm_id_t id, void *userData);
