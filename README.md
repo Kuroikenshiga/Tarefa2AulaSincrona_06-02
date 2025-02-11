@@ -59,4 +59,4 @@ RGB – GPIO 12. O que o discente observou no c
 6. Clique no botão "Import"
 7. Após carregar todos os arquivos necessários, clique na opção "Compile" presente no menu inferior direito.
 
-### [Vídeo de demonstração do projeto](https://youtu.be/Weyimyu6Oy4)
+### [Vídeo de demonstração do projeto](https://youtu.be/ggio0CdSkxo)
