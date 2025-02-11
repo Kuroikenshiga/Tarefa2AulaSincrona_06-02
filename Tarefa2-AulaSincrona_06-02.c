@@ -33,7 +33,7 @@ int main()
     uint SLICE_PIN = pwm_gpio_to_slice_num(PIN_SERVO_MOTOR);
 
     gpio_set_function(PIN_SERVO_MOTOR, GPIO_FUNC_PWM);
-    pwm_set_wrap(WRAP, SLICE_PIN);
+    pwm_set_wrap(SLICE_PIN,WRAP);
     pwm_set_clkdiv(SLICE_PIN, INTEGER_DIV);
 
     pwm_set_enabled(SLICE_PIN, 1);
