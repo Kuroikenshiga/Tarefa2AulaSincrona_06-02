@@ -19,7 +19,7 @@ volatile int64_t CURRENT_ALARM = 0;
 volatile uint8_t NEXT_MOVEMENT = MOVE_180_DEGREES;
 
 // Definição de alguns parâmetros do PWM
-const uint WRAP = 250000, INTEGER_DIV = 10;
+const uint WRAP = 62000, INTEGER_DIV = 40;
 
 // Váriavel responsável por aumentar o duty cycle
 uint16_t STEP = WRAP * 0.025;
