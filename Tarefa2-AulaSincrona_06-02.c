@@ -10,7 +10,7 @@ const uint PIN_SERVO_MOTOR = 22;
 int64_t off_alarm_callback(alarm_id_t id, void *userData);
 void infinite_moviment();
 // Possiveis movimentos do servo motor
-const uint8_t MOVE_180_DEGREES = 1, MOVE_90_DEGREES = 2, MOVE_0_DEGREES = 3, INFINITE_MOVIMENT = 4;
+const uint8_t MOVE_180_DEGREES = 1, MOVE_90_DEGREES = 2, MOVE_0_DEGREES = 3;
 
 // Armazena o id do alarme atual em vigor
 volatile int64_t CURRENT_ALARM = 0;
