@@ -18,7 +18,7 @@ volatile int64_t CURRENT_ALARM = 0;
 // Armazena o movimento que deve ser realizado no próximo alarme
 volatile uint8_t NEXT_MOVEMENT = MOVE_180_DEGREES;
 
-// Definição de alguns parâmetros
+// Definição de alguns parâmetros do PWM
 const uint WRAP = 250000, INTEGER_DIV = 10;
 
 // Váriavel responsável por aumentar o duty cycle
@@ -37,10 +37,10 @@ int main()
     pwm_set_clkdiv(SLICE_PIN, INTEGER_DIV);
 
     pwm_set_enabled(SLICE_PIN, 1);
-
+    //PWMf = clock/(intDiv*wrap)
     stdio_init_all();
 
-    CURRENT_ALARM = add_alarm_in_ms(2000, off_alarm_callback, NULL, false);
+    CURRENT_ALARM = add_alarm_in_ms(1000, off_alarm_callback, NULL, false);
 
     while (true)
     {
@@ -58,6 +58,7 @@ int64_t off_alarm_callback(alarm_id_t id, void *userData)
     case MOVE_180_DEGREES:
         pwm_set_gpio_level(PIN_SERVO_MOTOR, WRAP * 0.12);
         NEXT_MOVEMENT = MOVE_90_DEGREES;
+        cancel_alarm(CURRENT_ALARM);
         CURRENT_ALARM = add_alarm_in_ms(5000, off_alarm_callback, NULL, false);
         return 0;
 
@@ -82,6 +83,7 @@ void infinite_moviment()
 {
     if (CAN_INCREMENT)
     {
+        //Verifica se chegou ao nivel máximo
         if (STEP <= WRAP * 0.12)
         {
             STEP += WRAP * 0.00025;
@@ -91,7 +93,7 @@ void infinite_moviment()
         CAN_INCREMENT = false;
         return;
     }
-
+    //Verifica se chegou ao nivel mínimo
     if (STEP >= WRAP * 0.025)
     {
         STEP -= WRAP * 0.00025;
